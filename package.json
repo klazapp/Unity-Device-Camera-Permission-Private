@@ -1,0 +1,21 @@
+{
+  "name": "com.klazapp.devicecamerapermission",
+  "displayName": "Klazapp Device Camera Permission Utility",
+  "version": "1.0.0",
+  "unity": "2022.3",
+  "description": "This tool represents a solution for centralized logging management across an entire software project. It enhances the script compilation process to integrate log statements seamlessly, ensuring a consistent and standardized approach to logging. Key features include:\n\n1. **Automated Log Integration:** The tool intelligently injects log statements at critical junctures in the codebase during the compilation phase, streamlining the logging process.\n\n2. **Configurable Log Severity Levels:** It offers granular control over log verbosity, allowing developers to adjust logging levels (such as debug, info, warning, and error) globally or for specific modules, tailoring the logging output to the needs of different environments and stages of development.\n\n3. **Uniform Log Formatting:** By enforcing a uniform format for all log entries, the tool guarantees consistency in logging outputs. This format can encompass various elements such as timestamps, severity indicators, and contextual data, thereby facilitating easier log analysis and troubleshooting.\n\nOverall, this tool is designed to optimize logging practices, improve code maintainability, and enhance the monitoring capabilities within a software development environment.\"",
+  "keywords": [
+    "config",
+    "file",
+    "data"
+  ],
+  "category": "Utility",
+    "author": {
+      "name": "Klazapp",
+      "email": "klazapp@klazapp.com",
+      "url": "https://www.klazapp.com"
+    },
+    "documentationUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Public",
+    "changelogUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Public",
+    "licensesUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Public"
+}
