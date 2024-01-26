@@ -11,7 +11,7 @@ The `DeviceCameraPermissionHandler` utility, part of the `com.Klazapp.Utility` n
 ## Dependencies
 To use `DeviceCameraPermissionHandler`, ensure your Unity project meets the following requirements:
 - **Unity Version**: Requires Unity 2020.3 LTS or higher.
-- **Repository**: Access the utility at [DeviceCameraPermissionHandler Unity Utility](https://github.com/klazapp/Unity-DeviceCameraPermissionHandler-Public.git).
+- **Repository**: Access the utility at [DeviceCameraPermissionHandler Unity Utility](https://github.com/klazapp/Unity-Device-Camera-Permission-Private.git).
 
 ## Compatibility
 | Platform       | iOS | Android | Windows | macOS | WebGL |
