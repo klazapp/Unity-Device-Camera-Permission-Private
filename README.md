@@ -1,37 +1,42 @@
-# LogMessage Utility for Unity
+# DeviceCameraPermissionHandler Utility for Unity
 
 ## Introduction
-The `LogMessage` utility class is part of the `com.Klazapp.Utility` namespace, designed for Unity projects to simplify logging process. It allows for an easy on/off switch to enable or disable all log messages in the app, eliminating the need to manually comment out or add log statements in each script.
+The `DeviceCameraPermissionHandler` utility, part of the `com.Klazapp.Utility` namespace, is specifically designed for Unity projects to manage camera permissions across multiple platforms. It offers a straightforward solution for requesting and checking camera permissions, ensuring a seamless integration of camera functionalities in Unity applications.
 
 ## Features
-- Easy toggling of log messages with a single switch.
-- Methods for standard, error, and warning messages, each color-coded for clarity.
-- Conditional compilation to ensure log calls are only included in builds where logging is enabled.
+- **Unified Camera Permission Handling**: Simplifies camera permission requests and checks across iOS, Android, Windows, macOS, and WebGL.
+- **Platform-Specific Implementation**: Tailored approaches for each supported platform to ensure optimal functionality.
+- **Editor Compatibility**: Special handling in the Unity editor for testing and development purposes.
 
-## Usage
-To use `LogMessage`, first ensure it is correctly added to your Unity project. You can then call its methods in your scripts as follows:
+## Dependencies
+To use `DeviceCameraPermissionHandler`, ensure your Unity project meets the following requirements:
+- **Unity Version**: Requires Unity 2020.3 LTS or higher.
+- **Repository**: Access the utility at [DeviceCameraPermissionHandler Unity Utility](https://github.com/klazapp/Unity-DeviceCameraPermissionHandler-Public.git).
 
-```csharp
-LogMessage.Debug("This is a debug message");
-LogMessage.DebugError("This is an error message");
-LogMessage.DebugWarning("This is a warning message");
-```
-
-To enable logging, define `ENABLE_LOGS` in your project's compilation symbols. When `ENABLE_LOGS` is not defined, calls to `LogMessage` methods will be ignored, reducing overhead in production builds.
+## Compatibility
+| Platform       | iOS | Android | Windows | macOS | WebGL |
+|----------------|-----|---------|---------|-------|-------|
+| Compatibility  | ✔️  | ✔️      | ✔️      | ✔️    | ❓     |
 
 ## Installation
-To install the `LogMessage` utility via Unity's Package Manager, follow these steps:
+1. In Unity, go to `Window` > `Package Manager`.
+2. Click the `+` icon, select `Add package from git URL...`, and input `https://github.com/klazapp/Unity-DeviceCameraPermissionHandler-Public.git`.
+3. The package will be automatically downloaded and integrated into your project.
 
-1. **Open the Unity Package Manager**:
-   - In Unity, go to `Window` > `Package Manager`.
+## Usage
+To request and check camera permissions, use the following methods:
+```csharp
+DeviceCameraPermissionHandler.Instance.RequestDeviceCameraPermission((isGranted) => {
+    // Handle the result of the permission request
+});
 
-2. **Add Package from Git URL**:
-   - In the Package Manager, click the `+` icon at the top left corner and select `Add package from git URL...`.
-   - Enter the Git URL for this repository. It usually looks like `https://github.com/klazapp/Unity-Logger-Public.git`.
+bool hasPermission = DeviceCameraPermissionHandler.GetDeviceCameraPermission();
+```
 
-3. **Import into Your Project**:
-   - Unity will resolve and download the package.
-   - Once the package is downloaded, it will be available in your project, and you can start using `LogMessage` in your scripts.
+## Planned Enhancements (To-Do List)
+- **WebGL Support**: Implement a solution for camera permission handling in WebGL.
+- **Advanced Permission Management**: Additional features for more intricate permission scenarios.
+- **User-Friendly Prompts**: Enhanced UI/UX for permission requests.
 
 ## License
-This utility is released under the [MIT License](LICENSE).
+`DeviceCameraPermissionHandler` is available under the [MIT License](LICENSE).
