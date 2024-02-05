@@ -36,7 +36,6 @@ namespace com.Klazapp.Utility
                 return devices.Length > 0;
             }
 
-            
 #if UNITY_ANDROID
             return Permission.HasUserAuthorizedPermission(Permission.Camera);
 #elif UNITY_IOS
