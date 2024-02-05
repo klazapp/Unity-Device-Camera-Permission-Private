@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 #if UNITY_IOS
 using System.Runtime.InteropServices;
 #endif
@@ -14,6 +17,8 @@ namespace com.Klazapp.Utility
     {
         #region Variables
         private Action<bool> onDeviceCameraPermissionCallback;
+        
+        private static readonly WaitForSeconds oneWfs = new(0.1f);
         
 #if UNITY_IOS
         [DllImport("__Internal")]
@@ -94,19 +99,27 @@ namespace com.Klazapp.Utility
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Android_CameraPermissionDeniedAndDontAskAgainCallBack(string _)
         {
-            DeviceCameraPermissionCallback(false);
+            StartCoroutine(DelayAndroidDeviceCameraPermissionCallbackCo(false));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Android_CameraPermissionGrantedCallBack(string _)
         {
-            DeviceCameraPermissionCallback(true);
+            StartCoroutine(DelayAndroidDeviceCameraPermissionCallbackCo(true));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Android_CameraPermissionDeniedCallBack(string _)
         {
-            DeviceCameraPermissionCallback(false);
+            StartCoroutine(DelayAndroidDeviceCameraPermissionCallbackCo(false));
+        }
+        
+        // Android camera textures cannot immediately load after being called so its delayed by 1 second
+        // Only used for Android device callbacks
+        private IEnumerator DelayAndroidDeviceCameraPermissionCallbackCo(bool isGranted)
+        {
+            yield return oneWfs;
+            DeviceCameraPermissionCallback(isGranted);
         }
         
         public void IOS_CameraPermissionCallBack(string isGranted)
