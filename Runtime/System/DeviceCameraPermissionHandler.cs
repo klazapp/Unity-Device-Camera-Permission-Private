@@ -114,8 +114,10 @@ namespace com.Klazapp.Utility
             StartCoroutine(DelayAndroidDeviceCameraPermissionCallbackCo(false));
         }
         
-        // Android camera textures cannot immediately load after being called so its delayed by 1 second
-        // Only used for Android device callbacks
+        //Android camera webcam textures returns empty array when called IMMEDIATELY after granting permission
+        //Added delay to ensure webcam textures has time to load after permission has been granted
+        //Only used for Android device callbacks
+        //See URL: https://issuetracker.unity3d.com/issues/android-player-freezes-after-granting-app-permission
         private IEnumerator DelayAndroidDeviceCameraPermissionCallbackCo(bool isGranted)
         {
             yield return oneWfs;
