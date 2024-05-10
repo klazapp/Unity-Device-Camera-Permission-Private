@@ -1,6 +1,6 @@
 {
   "name": "com.klazapp.devicecamerapermission",
-  "displayName": "Unity Device Camera Permission Utility",
+  "displayName": "Unity Device Camera Permission Utility Private",
   "version": "1.0.0",
   "unity": "2022.3",
   "description": "Enhance your Unity projects with the DeviceCameraPermissionHandler utility, ensuring seamless camera permission management across iOS, Android, Windows, macOS, and WebGL. Tailored for platform-specific requirements and fully compatible with Unity Editor for streamlined testing and development, this utility simplifies integrating camera functionalities into your Unity applications.",
@@ -15,7 +15,7 @@
       "email": "klazapp@klazapp.com",
       "url": "https://www.klazapp.com"
     },
-    "documentationUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Public",
-    "changelogUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Public",
-    "licensesUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Public"
+    "documentationUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Private",
+    "changelogUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Private",
+    "licensesUrl": "https://github.com/klazapp/Unity-Device-Camera-Permission-Private"
 }
