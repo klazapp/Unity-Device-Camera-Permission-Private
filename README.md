@@ -14,9 +14,9 @@ To use `DeviceCameraPermissionHandler`, ensure your Unity project meets the foll
 - **Repository**: Access the utility at [DeviceCameraPermissionHandler Unity Utility](https://github.com/klazapp/Unity-Device-Camera-Permission-Private.git).
 
 ## Compatibility
-| Platform       | iOS | Android | Windows | macOS | WebGL |
-|----------------|-----|---------|---------|-------|-------|
-| Compatibility  | ✔️  | ✔️      | ✔️      | ✔️    | ❓     |
+| Compatibility | URP | BRP | HDRP |
+|---------------|-----|-----|------|
+| Compatible    | ✔️   | ✔️   | ✔️    |
 
 ## Installation
 1. In Unity, go to `Window` > `Package Manager`.
