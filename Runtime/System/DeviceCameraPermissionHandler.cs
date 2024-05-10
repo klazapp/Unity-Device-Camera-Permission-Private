@@ -13,9 +13,15 @@ using UnityEngine.Android;
 
 namespace com.Klazapp.Utility
 {
-    public class DeviceCameraPermissionHandler : MonoSingletonGlobal<DeviceCameraPermissionHandler>
+    public class DeviceCameraPermissionHandler : MonoBehaviour, IDeviceCameraPermission
     {
         #region Variables
+        [SerializeField]
+        [Tooltip("Toggle this to set script's singleton status. Status will be set on script's OnAwake function")]
+        private ScriptBehavior scriptBehavior = ScriptBehavior.None;
+        
+        public static DeviceCameraPermissionHandler Instance { get; private set; }
+        
         private Action<bool> onDeviceCameraPermissionCallback;
         
         private static readonly WaitForSeconds oneWfs = new(0.1f);
@@ -24,6 +30,13 @@ namespace com.Klazapp.Utility
         [DllImport("__Internal")]
         private static extern void RequestNativeIOSCameraPermission();
 #endif
+        #endregion
+        
+        #region Lifecycle Flow
+        private void Awake()
+        {
+            SetScriptBehaviour(scriptBehavior);
+        }
         #endregion
         
         #region Public Access
@@ -35,7 +48,7 @@ namespace com.Klazapp.Utility
                 var devices = WebCamTexture.devices;
                 return devices.Length > 0;
             }
-
+            
 #if UNITY_ANDROID
             return Permission.HasUserAuthorizedPermission(Permission.Camera);
 #elif UNITY_IOS
@@ -94,6 +107,28 @@ namespace com.Klazapp.Utility
             }
         }
 
+        #region Modules
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void SetScriptBehaviour(ScriptBehavior behavior)
+        {
+            if (behavior is not (ScriptBehavior.Singleton or ScriptBehavior.PersistentSingleton)) 
+                return;
+            
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+                
+            Instance = this;
+
+            if (behavior == ScriptBehavior.PersistentSingleton)
+            {
+                DontDestroyOnLoad(this.gameObject);
+            }
+        }
+        #endregion
+        
         #region Callbacks
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Android_CameraPermissionDeniedAndDontAskAgainCallBack(string _)
@@ -127,9 +162,10 @@ namespace com.Klazapp.Utility
         {
             DeviceCameraPermissionCallback(bool.Parse(isGranted));
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void DeviceCameraPermissionCallback(bool isGranted)
+        #endregion
+        
+        #region IDeviceCameraPermission
+        public void DeviceCameraPermissionCallback(bool isGranted)
         {
             onDeviceCameraPermissionCallback?.Invoke(isGranted);
         }
